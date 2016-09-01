@@ -4,7 +4,12 @@ class MemosController < ApplicationController
   # GET /memos
   # GET /memos.json
   def index
-    @memos = Memo.all
+    sort_param = params[:sort]
+    if sort_param.nil?
+      @memos = Memo.order("updated_at DESC")
+    else
+      @memos = Memo.order(sort_param)
+    end
   end
 
   # GET /memos/1
