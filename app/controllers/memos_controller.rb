@@ -8,7 +8,7 @@ class MemosController < ApplicationController
     if sort_param.nil?
       @memos = Memo.order("updated_at DESC")
     else
-      @memos = Memo.order(sort_param)
+      @memos = Memo.order(sort_param + " DESC")
     end
   end
 
